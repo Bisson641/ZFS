@@ -1,0 +1,109 @@
+Script started on 2022-08-29 21:42:52+06:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+[?2004h]0;bakai@debian: ~/gitdir/virtlab/zfsbakai@debian:~/gitdir/virtlab/zfs$ vagrant [K[K[K[K[K[K[K[Kvagrant ssh server[1Pup[C[C[C[C[C[C[C[1@ssh[C[C[C[C[C[C[C
+[?2004l[1;33m==> vagrant: You have requested to enabled the experimental flag with the following features:
+==> vagrant: 
+==> vagrant: Features:  disks
+==> vagrant: 
+==> vagrant: Please use with caution, as some of the features may not be fully
+==> vagrant: functional yet.[0m
+Last login: Mon Aug 29 15:41:04 2022 from 10.0.2.2
+]0;vagrant@server:~[vagrant@server ~]$ zpool create newpool sd{b[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Klsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 19.5G  0 disk 
+├─sda1   8:1    0    2G  0 part [SWAP]
+└─sda2   8:2    0 17.6G  0 part /
+sdb      8:16   0    1G  0 disk 
+├─sdb1   8:17   0 1014M  0 part 
+└─sdb9   8:25   0    8M  0 part 
+sdc      8:32   0    1G  0 disk 
+├─sdc1   8:33   0 1014M  0 part 
+└─sdc9   8:41   0    8M  0 part 
+sdd      8:48   0    1G  0 disk 
+├─sdd1   8:49   0 1014M  0 part 
+└─sdd9   8:57   0    8M  0 part 
+sde      8:64   0    1G  0 disk 
+sdf      8:80   0    1G  0 disk 
+]0;vagrant@server:~[vagrant@server ~]$ zpool status'[K
+  pool: test
+ state: ONLINE
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	test        ONLINE       0     0     0
+	  sdb       ONLINE       0     0     0
+	  sdc       ONLINE       0     0     0
+	  sdd       ONLINE       0     0     0
+
+errors: No known data errors
+]0;vagrant@server:~[vagrant@server ~]$ zfs create test/gzip
+cannot create 'test/gzip': permission denied
+]0;vagrant@server:~[vagrant@server ~]$ zfs create test/gzip[1@s[1@u[1@d[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P test/gzip[1Ptest/gzip[1Pest/gzip[1Pst/gzip[1Pt/gzip[1P/gzip[1Pgzip[1Pzip[1Pip[1Pp[Ksudo su
+]0;root@server:/home/vagrant[root@server vagrant]# zpool statusls -l /test/zpool status[Kzfs create test/gzip
+]0;root@server:/home/vagrant[root@server vagrant]# zfs create test/gzip-7
+]0;root@server:/home/vagrant[root@server vagrant]# zfs create test/gzip-7[K[K[K[K[K[Kzle
+]0;root@server:/home/vagrant[root@server vagrant]# zfs create test/zle[K[K[Klz4
+]0;root@server:/home/vagrant[root@server vagrant]# zfs list
+NAME          USED  AVAIL     REFER  MOUNTPOINT
+test          289K  2.69G       28K  /test
+test/gzip      24K  2.69G       24K  /test/gzip
+test/gzip-7    24K  2.69G       24K  /test/gzip-7
+test/lz4       24K  2.69G       24K  /test/lz4
+test/zle       24K  2.69G       24K  /test/zle
+]0;root@server:/home/vagrant[root@server vagrant]# zfs set compress=lz4 pool/fs[C[K[K[K[K[K[K[Ktest/gzip[1P test/gzip[1P test/gzip[1P test/gzipg test/gzipz test/gzipi test/gzipp test/gzip
+]0;root@server:/home/vagrant[root@server vagrant]# zfs set compress=gzip test/gzip- test/gzip7 test/gzip[C[C[C[C[C[C[C[C[C[C-7
+]0;root@server:/home/vagrant[root@server vagrant]# zfs set compress=gzip-7 test/gzip-7[1P test/gzip-7[1P test/gzip-7[1P test/gzip-7[1P test/gzip-7[1P test/gzip-7[1P test/gzip-7l test/gzip-7z test/gzip-74 test/gzip-7[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[Klz4
+]0;root@server:/home/vagrant[root@server vagrant]# zfs set compress=lz4 test/lz4[K[K[Kzle[C[C[1P test/zle[1P test/zle[1P test/zlez test/zlel test/zlee test/zle
+]0;root@server:/home/vagrant[root@server vagrant]# zfs set compress=zle test/zlelz4 test/lz4gzip-7 test/gzip-7[4P test/gziplist[K
+NAME          USED  AVAIL     REFER  MOUNTPOINT
+test          308K  2.69G       28K  /test
+test/gzip      24K  2.69G       24K  /test/gzip
+test/gzip-7    24K  2.69G       24K  /test/gzip-7
+test/lz4       24K  2.69G       24K  /test/lz4
+test/zle       24K  2.69G       24K  /test/zle
+]0;root@server:/home/vagrant[root@server vagrant]# zfs get compression,compressratio
+NAME         PROPERTY       VALUE           SOURCE
+test         compression    off             default
+test         compressratio  1.00x           -
+test/gzip    compression    gzip            local
+test/gzip    compressratio  1.00x           -
+test/gzip-7  compression    gzip-7          local
+test/gzip-7  compressratio  1.00x           -
+test/lz4     compression    lz4             local
+test/lz4     compressratio  1.00x           -
+test/zle     compression    zle             local
+test/zle     compressratio  1.00x           -
+]0;root@server:/home/vagrant[root@server vagrant]# ls -l
+total 3284
+-rw-r--r--. 1 root root 3359372 Aug  2 08:36 2600.txt.utf-8
+]0;root@server:/home/vagrant[root@server vagrant]# cp /[K2600.txt.utf-8 /test/gzip, /test/gzip-7/, t[K/test/zle/,  /test/lz4/
+cp: cannot stat '/test/gzip,': No such file or directory
+cp: cannot stat '/test/gzip-7/,': No such file or directory
+cp: cannot stat '/test/zle/,': No such file or directory
+]0;root@server:/home/vagrant[root@server vagrant]# cp 2600.txt.utf-8 /test/gzip, /test/gzip-7/, /test/zle/, //test/lz4/[K[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K-7
+]0;root@server:/home/vagrant[root@server vagrant]# cp 2600.txt.utf-8 /test/gzip-7[K[K[K[K[K[Klze
+]0;root@server:/home/vagrant[root@server vagrant]# cp 2600.txt.utf-8 /test/lze[K[K[Kzle
+]0;root@server:/home/vagrant[root@server vagrant]# cp 2600.txt.utf-8 /test/zlelze[K4
+cp: overwrite '/test/lz4/2600.txt.utf-8'? y
+]0;root@server:/home/vagrant[root@server vagrant]# cp 2600.txt.utf-8 /test/lz4zlelzegzip-7, /test/gzip-7/, /test/zle/, //test/lz4/[A[C[C[C[C[C[C[C[C[C[C[C[C[Cls -l[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Czfs get compression,compressratio
+NAME         PROPERTY       VALUE           SOURCE
+test         compression    off             default
+test         compressratio  1.34x           -
+test/gzip    compression    gzip            local
+test/gzip    compressratio  1.00x           -
+test/gzip-7  compression    gzip-7          local
+test/gzip-7  compressratio  2.67x           -
+test/lz4     compression    lz4             local
+test/lz4     compressratio  1.63x           -
+test/zle     compression    zle             local
+test/zle     compressratio  1.01x           -
+]0;root@server:/home/vagrant[root@server vagrant]# exit
+exit
+]0;vagrant@server:~[vagrant@server ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+[?2004h]0;bakai@debian: ~/gitdir/virtlab/zfsbakai@debian:~/gitdir/virtlab/zfs$ exit
+[?2004lexit
+
+Script done on 2022-08-29 22:20:24+06:00 [COMMAND_EXIT_CODE="0"]
